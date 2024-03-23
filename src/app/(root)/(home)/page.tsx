@@ -1,26 +1,32 @@
 import { QueryCountries } from "@/api/actions";
 import ContainerCountries from "@/components/ContainerCountries";
-import Image from "next/image";
-
-export default async function Home() {
-  const data = await QueryCountries();
-  console.log(data);
+import CountryCard from "@/components/CountryCard";
+import SearchBar from "@/components/SearchBar";
+import FilterBar from "@/components/FilterBar";
+interface SearchParamsProps {
+  searchParams: { [key: string]: string };
+}
+export default async function Home({ searchParams }: SearchParamsProps) {
+  const data = await QueryCountries(searchParams.search, searchParams.region);
   return (
-    <main className="bg-light-background min-h-screen dark:bg-dark-background">
-      <ContainerCountries>
-        {data.map((item, index) => {
-          return (
-            <div className="" key={index}>
-              <Image
-                src={item.flags.png}
-                width={300}
-                height={300}
-                alt={item.name.common}
-              />
-            </div>
-          );
-        })}
-      </ContainerCountries>
+    <main className="flex flex-col gap-8 bg-light-background min-h-screen dark:bg-dark-background px-4">
+      <div className="flex items-center justify-between container mx-auto max-w-[1390px] flex-wrap">
+        <SearchBar />
+        <FilterBar />
+      </div>
+      {data ? (
+        <ContainerCountries>
+          {data.map((item, index) => {
+            return <CountryCard key={index} country={item} index={index} />;
+          })}
+        </ContainerCountries>
+      ) : (
+        <div className="container mx-auto max-w-[1390px] flex items-center justify-center">
+          <p className=" text-light-text dark:text-dark-text">
+            No Country With This Name :C {searchParams.search}
+          </p>
+        </div>
+      )}
     </main>
   );
 }
