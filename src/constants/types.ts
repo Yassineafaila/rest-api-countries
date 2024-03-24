@@ -28,6 +28,7 @@ export interface Root {
   car: Car;
   timezones: string[];
   continents: string[];
+  borders:string[]
   flags: Flags;
   coatOfArms: CoatOfArms;
   startOfWeek: string;

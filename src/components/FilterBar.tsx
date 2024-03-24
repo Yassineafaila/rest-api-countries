@@ -11,7 +11,9 @@ function FilterBar() {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [filterBy, setFilterBy] = useState<string>(query || "");
   useEffect(() => {
-    if (filterBy) {
+    if (filterBy === "All") {
+      return router.push("/");
+    } else if (filterBy) {
       router.push(`/?region=${filterBy}`);
     } else {
       router.push("/");
@@ -37,11 +39,19 @@ function FilterBar() {
           initial={{ opacity: 0, y: -200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, ease: "easeIn", duration: 0.5 }}
-          className="absolute top-20 rounded px-4 py-5 left-0 bg-light-primary dark:bg-dark-primary w-full"
+          className="absolute top-20 rounded  py-5 left-0 bg-light-primary dark:bg-dark-primary w-full z-50"
         >
+          <li
+            className="text-dark-primary dark:text-light-primary font-medium mt-2 text-base  cursor-pointer  hover:bg-gray-300 w-full px-4 duration-300 ease-in-out delay-100"
+            key={1 * 2}
+            onClick={() => setFilterBy("All")}
+          >
+            All
+          </li>
+
           {region.map((r: string, index: number) => (
             <li
-              className="text-dark-primary dark:text-light-primary font-medium mt-2 text-base  cursor-pointer"
+              className="text-dark-primary dark:text-light-primary font-medium mt-2 text-base  cursor-pointer  hover:bg-gray-300 w-full px-4 duration-300 ease-in-out delay-100"
               key={index}
               onClick={() => setFilterBy(r)}
             >

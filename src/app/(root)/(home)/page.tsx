@@ -16,9 +16,11 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       </div>
       {data ? (
         <ContainerCountries>
-          {data.map((item, index) => {
-            return <CountryCard key={index} country={item} index={index} />;
-          })}
+          {data.length > 0
+            ? data.map((item, index) => {
+                return <CountryCard key={index} country={item} index={index} />;
+              })
+            : "No Data"}
         </ContainerCountries>
       ) : (
         <div className="container mx-auto max-w-[1390px] flex items-center justify-center">

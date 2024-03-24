@@ -39,7 +39,7 @@ const CountryCard: React.FC<IProps> = ({ country, index }) => {
               Population :
             </span>
             <span className="ms-2 dark:text-light-background">
-              {country.population}
+              {country.population.toLocaleString()}
             </span>
           </p>
           <p className="mt-1">

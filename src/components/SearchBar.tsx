@@ -21,7 +21,7 @@ function SearchBar() {
         type="text"
         placeholder="Search for a country ..."
         value={search}
-        className="outline-none text-light-input bg-transparent"
+        className="outline-none text-light-input bg-transparent w-full px-2"
         onChange={(e) => setSearch(e.target.value)}
       />
     </div>

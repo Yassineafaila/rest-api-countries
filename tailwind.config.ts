@@ -19,7 +19,7 @@ const config: Config = {
           primary: "hsl(0, 0%, 100%)", // White (Dark Mode Text & Light Mode Elements)
           secondary: "hsl(0, 0%, 100%)", // White (Dark Mode Text & Light Mode Elements)
           text: "hsl(200, 15%, 8%)", // Very Dark Blue (Light Mode Text)
-          input: "hsl(0, 0%, 52%)", // Dark Gray (Light Mode Input)
+          input: "hsl(0, 0%, 52%)", // Dark Gray (Light Mode Input
           background: "hsl(0, 0%, 98%)", // Very Light Gray (Light Mode Background)
         },
       },
